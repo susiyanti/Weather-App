@@ -33,6 +33,7 @@
             @endempty
 
         </div>
+        <x-weather-widget :forecast="$forecast" />
     </div>
 </body>
 
