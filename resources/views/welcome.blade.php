@@ -23,7 +23,11 @@
             <label for="city">Select city:</label>
             <select id="city" class="form-control">
                 @foreach ($cities as $city)
+                @if ($city['id'] == $selectedCity)
+                <option value={{ $city['id'] }} selected>{{ $city['name'] }}</option>
+                @else
                 <option value={{ $city['id'] }}>{{ $city['name'] }}</option>
+                @endif
                 @endforeach
             </select>
             @endisset
@@ -35,6 +39,8 @@
         </div>
         <x-weather-widget :forecast="$forecast" />
     </div>
+
+    @vite('resources/js/app.js')
 </body>
 
 </html>

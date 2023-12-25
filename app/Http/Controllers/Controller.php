@@ -25,12 +25,13 @@ class Controller extends BaseController
     public function index(): View
     {
         $cities = $this->cityService->getCities();
-        $location = $cities[0]['id'];
+        $location = request()->location ?? $cities[0]['id'];
         $weatherForecast = $this->openWeatherMapClient->getDailyForecast($location);
 
         return view('welcome', [
             'cities' => $cities,
-            'forecast' => $weatherForecast
+            'forecast' => $weatherForecast,
+            'selectedCity' => $location,
         ]);
     }
 }
